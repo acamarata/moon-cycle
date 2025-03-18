@@ -1,14 +1,10 @@
 {
   "name": "moon-cycle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NREL SPA native implementation in JS",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ussunnah/moon-cycle.git"
   },
   "keywords": [
     "moon",
@@ -16,10 +12,14 @@
     "images",
     "nasa"
   ],
-  "author": "USF",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ussunnah/moon-cycle/issues"
+  "author": "Ali Camarata",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acamarata/moon-cycle.git"
   },
-  "homepage": "https://github.com/ussunnah/moon-cycle#readme"
+  "homepage": "https://github.com/acamarata/moon-cycle#readme",
+  "bugs": {
+    "url": "https://github.com/acamarata/moon-cycle/issues"
+  }
 }
