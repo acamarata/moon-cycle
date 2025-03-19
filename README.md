@@ -12,9 +12,7 @@ The images have been organized, named, converted to webp, and optimized accordin
 
 ## Installation
 
-```bash
-npm install praycalc
-```
+The images in this project make it too big for npm, so recommended usage is below.
 
 ## Usage
 
