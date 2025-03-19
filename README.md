@@ -31,11 +31,9 @@ const my = cycleYear(date)
 console.log(`\nDate = ${date.toISOString()}\nMatch Moon Image URLs to Date..\n`)
 console.log(`MM = /mm/${mm}`);
 console.log(`MY = /my/${my}`);
-
-
 ```
 
-Exported functions include cycleMonth and cycleYear
+Exported functions include cycleMonth and cycleYear.  Please note that the directory name is not returned by the function to keep this part flexible depending on what you want to actually name the directories or if you want low and high resolution folders like this repository offers.  The function only returns the actual file to use.
 
 ### Parameters:
 
@@ -47,4 +45,4 @@ Contributions are welcome!
 
 ## License
 
-ISC License
+MIT License
