@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22, 24]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test (ESM)
+        run: node test.mjs
+
+      - name: Test (CJS)
+        run: node test-cjs.cjs
+
+  typecheck:
+    name: Type Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Type check
+        run: pnpm typecheck
+
+  pack-check:
+    name: Pack Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Check pack contents
+        run: |
+          npm pack --dry-run 2>&1 | tee pack-output.txt
+          # Verify expected files are present
+          grep -q "dist/index.cjs" pack-output.txt
+          grep -q "dist/index.mjs" pack-output.txt
+          grep -q "dist/index.d.ts" pack-output.txt
+          grep -q "dist/index.d.mts" pack-output.txt
+          grep -q "README.md" pack-output.txt
+          grep -q "LICENSE" pack-output.txt
+          grep -q "CHANGELOG.md" pack-output.txt
+          # Verify image folders are NOT in the pack
+          ! grep -q "mm-256" pack-output.txt
+          ! grep -q "my-256" pack-output.txt
+          echo "Pack check passed"

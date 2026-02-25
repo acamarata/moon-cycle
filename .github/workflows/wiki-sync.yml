@@ -1,0 +1,23 @@
+name: Wiki Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .wiki/**
+
+jobs:
+  sync:
+    name: Sync .wiki/ to GitHub Wiki
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync wiki pages
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
+        with:
+          path: .wiki/
+          token: ${{ secrets.GITHUB_TOKEN }}
