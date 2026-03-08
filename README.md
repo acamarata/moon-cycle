@@ -44,7 +44,7 @@ const { cycleMonth, cycleYear, cdnUrl } = require('moon-cycle');
 
 Maps a date to an image filename in the monthly (synodic) dataset.
 
-Uses the IAU mean synodic month (29.530588 days) and a 2023-11-13 new moon anchor. The 708 hourly images span one complete synodic cycle. The result wraps continuously — any past or future date resolves to a valid image.
+Uses the IAU mean synodic month (29.530588 days) and a 2023-11-13 new moon anchor. The 708 hourly images span one complete synodic cycle. The result wraps continuously: any past or future date resolves to a valid image.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -91,10 +91,10 @@ const url = cdnUrl(file, 'mm', 256, 75);
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `filename` | `string` | — | Result from `cycleMonth` or `cycleYear` |
-| `set` | `'mm' \| 'my'` | — | Monthly or yearly dataset |
-| `size` | `256 \| 512` | — | Image dimension |
-| `quality` | `75 \| 85` | — | WebP quality |
+| `filename` | `string` |: | Result from `cycleMonth` or `cycleYear` |
+| `set` | `'mm' \| 'my'` |: | Monthly or yearly dataset |
+| `size` | `256 \| 512` |: | Image dimension |
+| `quality` | `75 \| 85` |: | WebP quality |
 | `ref` | `string` | `'main'` | Branch, tag, or commit SHA |
 
 ### Constants
@@ -175,10 +175,10 @@ Full reference: [GitHub Wiki](https://github.com/acamarata/moon-cycle/wiki)
 
 ## Related
 
-- [nrel-spa](https://github.com/acamarata/nrel-spa) — Pure JS NREL Solar Position Algorithm, zero dependencies
-- [pray-calc](https://github.com/acamarata/pray-calc) — Islamic prayer times with dynamic angle algorithm
-- [luxon-hijri](https://github.com/acamarata/luxon-hijri) — Hijri/Gregorian calendar conversion
-- [moon-sighting](https://github.com/acamarata/moon-sighting) — Lunar crescent visibility using Yallop and Odeh criteria
+- [nrel-spa](https://github.com/acamarata/nrel-spa): Pure JS NREL Solar Position Algorithm, zero dependencies
+- [pray-calc](https://github.com/acamarata/pray-calc): Islamic prayer times with dynamic angle algorithm
+- [luxon-hijri](https://github.com/acamarata/luxon-hijri): Hijri/Gregorian calendar conversion
+- [moon-sighting](https://github.com/acamarata/moon-sighting): Lunar crescent visibility using Yallop and Odeh criteria
 
 ## Acknowledgments
 

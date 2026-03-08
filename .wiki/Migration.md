@@ -5,7 +5,7 @@ Upgrading from moon-cycle v1 to v2.
 ## Summary of Breaking Changes
 
 1. **Off-by-one fix:** `cycleMonth` and `cycleYear` now return 1-indexed filenames
-2. **No default export:** Functions are now named exports only (this was always the case — `require('moon-cycle')` still works, but `require('moon-cycle').default` does not exist)
+2. **No default export:** Functions are now named exports only (this was always the case: `require('moon-cycle')` still works, but `require('moon-cycle').default` does not exist)
 
 ## 1. Off-by-one correction
 
@@ -24,7 +24,7 @@ v2 corrects this. The returned filenames now match the actual files in the datas
 v1 shipped a hand-written `index.d.ts` that incorrectly declared both functions as returning `{ result: string }`:
 
 ```ts
-// v1 — incorrect
+// v1: incorrect
 export function cycleMonth(date: Date): MonthResult;
 interface MonthResult { result: string }
 ```
@@ -32,7 +32,7 @@ interface MonthResult { result: string }
 The actual runtime behavior in v1 was to return a plain `string`, not an object. v2 types match the implementation:
 
 ```ts
-// v2 — correct
+// v2: correct
 export function cycleMonth(date?: Date): string;
 ```
 
@@ -52,10 +52,10 @@ const src = `/mm-256-75/${filename}`;
 
 v2 adds several exports that did not exist in v1. These are additive and do not break existing code:
 
-- `imageFolder(set, size, quality)` — constructs folder name strings
-- `cdnUrl(filename, set, size, quality, ref?)` — constructs jsDelivr CDN URLs
-- `SYNODIC_MONTH`, `MONTH_IMAGES`, `YEAR_IMAGES`, `MONTH_ANCHOR`, `YEAR_ANCHOR` — constants
-- `ImageSet`, `ImageSize`, `ImageQuality` — TypeScript types
+- `imageFolder(set, size, quality)`: constructs folder name strings
+- `cdnUrl(filename, set, size, quality, ref?)`: constructs jsDelivr CDN URLs
+- `SYNODIC_MONTH`, `MONTH_IMAGES`, `YEAR_IMAGES`, `MONTH_ANCHOR`, `YEAR_ANCHOR`: constants
+- `ImageSet`, `ImageSize`, `ImageQuality`: TypeScript types
 
 ## 4. Optional `date` parameter
 
@@ -68,8 +68,8 @@ v2 ships dual CJS and ESM builds. If you use a bundler, it will now automaticall
 ## Migration Checklist
 
 - [ ] Update to `moon-cycle@2.0.0`
-- [ ] Verify image filenames — if you referenced `000.webp` or `0000.webp` directly, rename to `001.webp` / `0001.webp`
-- [ ] Remove any `.result` property access — both functions return `string` directly
+- [ ] Verify image filenames: if you referenced `000.webp` or `0000.webp` directly, rename to `001.webp` / `0001.webp`
+- [ ] Remove any `.result` property access: both functions return `string` directly
 - [ ] Update TypeScript types if you had manual overrides working around the incorrect v1 declarations
 - [ ] Consider using `cdnUrl()` if you were constructing CDN URLs manually
 

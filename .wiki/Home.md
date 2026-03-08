@@ -27,7 +27,7 @@ pnpm add moon-cycle
 ```ts
 import { cycleMonth, cdnUrl } from 'moon-cycle';
 
-const file = cycleMonth(); // e.g. "354.webp" — current lunar phase
+const file = cycleMonth(); // e.g. "354.webp": current lunar phase
 const url  = cdnUrl(file, 'mm', 256, 75);
 // => 'https://cdn.jsdelivr.net/gh/acamarata/moon-cycle@main/mm-256-75/354.webp'
 ```
@@ -47,9 +47,9 @@ All eight combinations (`mm`/`my` × `256`/`512` × `75`/`85`) are available. Us
 
 ## Pages
 
-- [API Reference](API-Reference) — full function and type documentation
-- [Architecture](Architecture) — algorithm design, dataset description, tradeoffs
-- [Migration Guide](Migration) — upgrading from v1
+- [API Reference](API-Reference): full function and type documentation
+- [Architecture](Architecture): algorithm design, dataset description, tradeoffs
+- [Migration Guide](Migration): upgrading from v1
 
 ## Source
 

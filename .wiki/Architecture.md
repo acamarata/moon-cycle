@@ -12,8 +12,8 @@ All images originate from NASA's Scientific Visualization Studio visualization "
 
 The raw frames were converted to WebP and organized into eight folders combining two image sets, two resolutions, and two quality levels:
 
-- `mm-*` — 708 images covering one synodic month (monthly set)
-- `my-*` — 8,760 images covering the full year 2023 (yearly set)
+- `mm-*`: 708 images covering one synodic month (monthly set)
+- `my-*`: 8,760 images covering the full year 2023 (yearly set)
 
 Images are named with zero-padded integers starting at 1 (`001.webp` to `708.webp` for monthly, `0001.webp` to `8760.webp` for yearly).
 
@@ -21,7 +21,7 @@ Images are named with zero-padded integers starting at 1 (`001.webp` to `708.web
 
 ### Concept
 
-The synodic month is the time between two identical lunar phases as seen from Earth — new moon to new moon. Its IAU mean value is **29.53058821398858 days**. The 708 images in the monthly set span exactly one such cycle at hourly resolution.
+The synodic month is the time between two identical lunar phases as seen from Earth: new moon to new moon. Its IAU mean value is **29.53058821398858 days**. The 708 images in the monthly set span exactly one such cycle at hourly resolution.
 
 To find the correct image for any date, the algorithm:
 
@@ -45,13 +45,13 @@ index           = floor(fraction * 708) + 1
 
 ### Limitation
 
-The synodic month is not exactly 29.53058821398858 days — that value is the IAU *mean* (averaged over centuries). The actual length of a given synodic month varies by up to ~7 hours depending on the Moon's position in its elliptical orbit. For dates far from the 2023 reference period, accumulated drift means the image may be off by a few frames from the true observed phase. For UI purposes, this is imperceptible.
+The synodic month is not exactly 29.53058821398858 days: that value is the IAU *mean* (averaged over centuries). The actual length of a given synodic month varies by up to ~7 hours depending on the Moon's position in its elliptical orbit. For dates far from the 2023 reference period, accumulated drift means the image may be off by a few frames from the true observed phase. For UI purposes, this is imperceptible.
 
 ## Algorithm 2: Calendar Year (`cycleYear`)
 
 ### Concept
 
-The yearly set contains 8,760 images — one per hour of the 365-day year 2023. Rather than tracking lunar phase directly, `cycleYear` maps any date to its hour-of-year equivalent and uses that to index into the 2023 imagery.
+The yearly set contains 8,760 images: one per hour of the 365-day year 2023. Rather than tracking lunar phase directly, `cycleYear` maps any date to its hour-of-year equivalent and uses that to index into the 2023 imagery.
 
 The algorithm:
 
@@ -75,7 +75,7 @@ index         = floor(fraction * 8760) + 1
 
 ### Limitation
 
-The year 2023 had 365 days (not a leap year), so the 8,760 images correspond exactly to one non-leap year. For years with 366 days, there is a subtle 24-image offset in the second half of the year — the hour-of-year for December 31 in a leap year wraps around slightly differently than in 2023. This is a cosmetic artifact, not a functional error.
+The year 2023 had 365 days (not a leap year), so the 8,760 images correspond exactly to one non-leap year. For years with 366 days, there is a subtle 24-image offset in the second half of the year: the hour-of-year for December 31 in a leap year wraps around slightly differently than in 2023. This is a cosmetic artifact, not a functional error.
 
 ## Choosing Between the Two
 
@@ -85,14 +85,14 @@ The year 2023 had 365 days (not a leap year), so the 8,760 images correspond exa
 | Animate through a year of moon phases for a calendar app | `cycleYear` |
 | Show a consistent seasonal moon appearance | `cycleYear` |
 | Compute when the next full moon occurs | `cycleMonth` + `SYNODIC_MONTH` |
-| Display a decorative moon that changes daily | Either — `cycleYear` has smoother hourly progression |
+| Display a decorative moon that changes daily | Either: `cycleYear` has smoother hourly progression |
 
 ## Package Structure
 
 ```
 moon-cycle/
 ├── src/
-│   ├── index.ts        # Public API — re-exports all named exports
+│   ├── index.ts        # Public API: re-exports all named exports
 │   ├── types.ts        # Types, constants, anchor dates
 │   ├── cycleMonth.ts   # Synodic algorithm
 │   ├── cycleYear.ts    # Calendar-year algorithm
@@ -112,10 +112,10 @@ moon-cycle/
 
 The source is TypeScript, compiled by [tsup](https://tsup.egoist.dev/) (esbuild-based). tsup produces four output files from `src/index.ts`:
 
-- `dist/index.cjs` — CommonJS for `require()`
-- `dist/index.mjs` — ESM for `import`
-- `dist/index.d.ts` — type definitions for CJS consumers
-- `dist/index.d.mts` — type definitions for ESM consumers
+- `dist/index.cjs`: CommonJS for `require()`
+- `dist/index.mjs`: ESM for `import`
+- `dist/index.d.ts`: type definitions for CJS consumers
+- `dist/index.d.mts`: type definitions for ESM consumers
 
 The `exports` field in `package.json` uses types-first conditional exports so TypeScript resolves the correct declaration file regardless of `moduleResolution` setting.
 

@@ -117,10 +117,10 @@ Returns a jsDelivr CDN URL serving the specified image directly from the GitHub 
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `filename` | `string` | — | Filename from `cycleMonth()` or `cycleYear()` |
-| `set` | `'mm' \| 'my'` | — | Monthly or yearly dataset |
-| `size` | `256 \| 512` | — | Image dimension in pixels |
-| `quality` | `75 \| 85` | — | WebP compression quality |
+| `filename` | `string` |: | Filename from `cycleMonth()` or `cycleYear()` |
+| `set` | `'mm' \| 'my'` |: | Monthly or yearly dataset |
+| `size` | `256 \| 512` |: | Image dimension in pixels |
+| `quality` | `75 \| 85` |: | WebP compression quality |
 | `ref` | `string` | `'main'` | Branch name, git tag, or commit SHA |
 
 **Returns:** A full URL string, e.g. `"https://cdn.jsdelivr.net/gh/acamarata/moon-cycle@main/mm-256-75/354.webp"`.
