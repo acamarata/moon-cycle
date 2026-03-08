@@ -178,7 +178,7 @@ Full reference: [GitHub Wiki](https://github.com/acamarata/moon-cycle/wiki)
 - [nrel-spa](https://github.com/acamarata/nrel-spa) — Pure JS NREL Solar Position Algorithm, zero dependencies
 - [pray-calc](https://github.com/acamarata/pray-calc) — Islamic prayer times with dynamic angle algorithm
 - [luxon-hijri](https://github.com/acamarata/luxon-hijri) — Hijri/Gregorian calendar conversion
-- [moon-calc](https://github.com/acamarata/moon-calc) — Lunar crescent visibility using Yallop and Odeh criteria
+- [moon-sighting](https://github.com/acamarata/moon-sighting) — Lunar crescent visibility using Yallop and Odeh criteria
 
 ## Acknowledgments
 
