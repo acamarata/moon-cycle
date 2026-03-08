@@ -14,6 +14,10 @@ const SYNODIC_SECONDS = SYNODIC_MONTH * 24 * 60 * 60;
  * @returns A zero-padded filename string, e.g. `"354.webp"`.
  */
 export function cycleMonth(date: Date = new Date()): string {
+  if (!(date instanceof Date) || isNaN(date.getTime())) {
+    throw new TypeError('date must be a valid Date instance');
+  }
+
   // Seconds elapsed since the known new moon anchor
   const elapsed = (date.getTime() - MONTH_ANCHOR.getTime()) / 1000;
 

@@ -38,7 +38,7 @@ export function cdnUrl(
   set: ImageSet,
   size: ImageSize,
   quality: ImageQuality,
-  ref: string = 'main'
+  ref: string = 'main',
 ): string {
   const folder = imageFolder(set, size, quality);
   return `https://cdn.jsdelivr.net/gh/acamarata/moon-cycle@${ref}/${folder}/${filename}`;

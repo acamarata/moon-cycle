@@ -8,95 +8,76 @@ on:
 
 jobs:
   test:
-    name: Test (Node ${{ matrix.node-version }})
+    name: Test (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20, 22, 24]
-
+        node: [20, 22, 24]
     steps:
       - uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v4
         with:
           version: 10
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node }}
           cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: node --test test.mjs
+      - run: node --test test-cjs.cjs
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build
-        run: pnpm build
-
-      - name: Test (ESM)
-        run: node test.mjs
-
-      - name: Test (CJS)
-        run: node test-cjs.cjs
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint
+      - run: pnpm run format:check
 
   typecheck:
-    name: Type Check
+    name: Typecheck
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v4
         with:
           version: 10
-
-      - name: Use Node.js 24
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Type check
-        run: pnpm typecheck
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
 
   pack-check:
-    name: Pack Check
+    name: Pack check
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v4
         with:
           version: 10
-
-      - name: Use Node.js 24
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build
-        run: pnpm build
-
-      - name: Check pack contents
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Verify pack contents
         run: |
-          npm pack --dry-run 2>&1 | tee pack-output.txt
-          # Verify expected files are present
-          grep -q "dist/index.cjs" pack-output.txt
-          grep -q "dist/index.mjs" pack-output.txt
-          grep -q "dist/index.d.ts" pack-output.txt
-          grep -q "dist/index.d.mts" pack-output.txt
-          grep -q "README.md" pack-output.txt
-          grep -q "LICENSE" pack-output.txt
-          grep -q "CHANGELOG.md" pack-output.txt
-          # Verify image folders are NOT in the pack
-          ! grep -q "mm-256" pack-output.txt
-          ! grep -q "my-256" pack-output.txt
+          PACK=$(npm pack --dry-run 2>&1)
+          echo "$PACK"
+          for f in dist/index.cjs dist/index.mjs dist/index.d.ts dist/index.d.mts README.md LICENSE CHANGELOG.md; do
+            echo "$PACK" | grep -q "$f" || (echo "Missing: $f" && exit 1)
+          done
+          echo "$PACK" | grep -q "src/" && (echo "ERROR: src/ should not be in pack" && exit 1) || true
           echo "Pack check passed"

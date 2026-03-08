@@ -15,6 +15,10 @@ import { YEAR_IMAGES, YEAR_ANCHOR } from './types.js';
  * @returns A zero-padded filename string, e.g. `"4380.webp"`.
  */
 export function cycleYear(date: Date = new Date()): string {
+  if (!(date instanceof Date) || isNaN(date.getTime())) {
+    throw new TypeError('date must be a valid Date instance');
+  }
+
   // Hours elapsed since 2023-01-01T00:00:00Z
   const elapsed_hours = (date.getTime() - YEAR_ANCHOR.getTime()) / (1000 * 3600);
 
