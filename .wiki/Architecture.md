@@ -45,7 +45,7 @@ index           = floor(fraction * 708) + 1
 
 ### Limitation
 
-The synodic month is not exactly 29.53058821398858 days: that value is the IAU *mean* (averaged over centuries). The actual length of a given synodic month varies by up to ~7 hours depending on the Moon's position in its elliptical orbit. For dates far from the 2023 reference period, accumulated drift means the image may be off by a few frames from the true observed phase. For UI purposes, this is imperceptible.
+The synodic month is not exactly 29.53058821398858 days: that value is the IAU _mean_ (averaged over centuries). The actual length of a given synodic month varies by up to ~7 hours depending on the Moon's position in its elliptical orbit. For dates far from the 2023 reference period, accumulated drift means the image may be off by a few frames from the true observed phase. For UI purposes, this is imperceptible.
 
 ## Algorithm 2: Calendar Year (`cycleYear`)
 
@@ -79,13 +79,13 @@ The year 2023 had 365 days (not a leap year), so the 8,760 images correspond exa
 
 ## Choosing Between the Two
 
-| Scenario | Recommendation |
-| --- | --- |
-| Show the actual current moon phase | `cycleMonth` |
-| Animate through a year of moon phases for a calendar app | `cycleYear` |
-| Show a consistent seasonal moon appearance | `cycleYear` |
-| Compute when the next full moon occurs | `cycleMonth` + `SYNODIC_MONTH` |
-| Display a decorative moon that changes daily | Either: `cycleYear` has smoother hourly progression |
+| Scenario                                                 | Recommendation                                      |
+| -------------------------------------------------------- | --------------------------------------------------- |
+| Show the actual current moon phase                       | `cycleMonth`                                        |
+| Animate through a year of moon phases for a calendar app | `cycleYear`                                         |
+| Show a consistent seasonal moon appearance               | `cycleYear`                                         |
+| Compute when the next full moon occurs                   | `cycleMonth` + `SYNODIC_MONTH`                      |
+| Display a decorative moon that changes daily             | Either: `cycleYear` has smoother hourly progression |
 
 ## Package Structure
 
@@ -131,4 +131,4 @@ The probability of hitting the exact boundary where `000.webp` would have been r
 
 ---
 
-*[Home](Home) | [API Reference](API-Reference) | [Migration Guide](Migration)*
+_[Home](Home) | [API Reference](API-Reference) | [Migration Guide](Migration)_

@@ -26,7 +26,9 @@ v1 shipped a hand-written `index.d.ts` that incorrectly declared both functions 
 ```ts
 // v1: incorrect
 export function cycleMonth(date: Date): MonthResult;
-interface MonthResult { result: string }
+interface MonthResult {
+  result: string;
+}
 ```
 
 The actual runtime behavior in v1 was to return a plain `string`, not an object. v2 types match the implementation:
@@ -75,4 +77,4 @@ v2 ships dual CJS and ESM builds. If you use a bundler, it will now automaticall
 
 ---
 
-*[Home](Home) | [API Reference](API-Reference) | [Architecture](Architecture)*
+_[Home](Home) | [API Reference](API-Reference) | [Architecture](Architecture)_
