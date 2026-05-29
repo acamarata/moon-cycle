@@ -4,20 +4,22 @@ on:
   push:
     branches: [main]
     paths:
-      - .github/wiki/**
+      - '.github/wiki/**'
+
+permissions:
+  contents: write
 
 jobs:
   sync:
-    name: Sync .github/wiki/ to GitHub Wiki
+    name: Sync wiki to GitHub Wiki
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Sync wiki pages
+      - name: Sync .github/wiki/ to GitHub Wiki
         uses: Andrew-Chen-Wang/github-wiki-action@v4
         with:
           path: .github/wiki/
-          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}

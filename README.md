@@ -8,13 +8,19 @@ Maps any JavaScript `Date` to the correct NASA moon phase image filename. Two al
 
 The image dataset (~438 MB of hourly WebP photos from NASA's Scientific Visualization Studio) lives in this repository. The npm package ships only the code. Serve images via CDN (jsDelivr, see below) or by cloning the repo and hosting the folders yourself.
 
-## Installation
+## Distribution
+
+This package is **not published to npm**. The image dataset (~438 MB) exceeds the npm registry limit. Install via git clone or reference the CDN directly.
 
 ```bash
-npm install moon-cycle
-# or
-pnpm add moon-cycle
+# Clone the repo to get the code and images together
+git clone https://github.com/acamarata/moon-cycle.git
+
+# Or install the code-only package from GitHub Packages / direct git
+pnpm add github:acamarata/moon-cycle
 ```
+
+For most web use cases, you do not need to install the package at all. Use `cdnUrl()` to serve images via jsDelivr directly from the GitHub repository (see API below).
 
 ## Quick Start
 

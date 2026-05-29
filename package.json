@@ -1,7 +1,7 @@
 {
   "name": "moon-cycle",
   "version": "2.0.0",
-  "description": "Maps any date to NASA moon phase imagery via synodic and calendar-year cycles. Lightweight npm package — images served via CDN or self-hosted from the GitHub repository.",
+  "description": "Maps any date to NASA moon phase imagery via synodic and calendar-year cycles. Lightweight npm package \u2014 images served via CDN or self-hosted from the GitHub repository.",
   "author": "Aric Camarata",
   "license": "MIT",
   "main": "./dist/index.cjs",
@@ -9,15 +9,11 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs"
-      }
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist/",
@@ -34,7 +30,8 @@
     "format:check": "prettier --check src/ test.mjs test-cjs.cjs eslint.config.mjs tsup.config.ts",
     "pretest": "tsup",
     "test": "node --test test.mjs && node --test test-cjs.cjs",
-    "prepublishOnly": "tsup"
+    "prepublishOnly": "tsup",
+    "coverage": "c8 --reporter=lcov --reporter=text node --test"
   },
   "engines": {
     "node": ">=20"
@@ -73,5 +70,7 @@
     "tsup": "^8.0.0",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.56.1"
-  }
+  },
+  "type": "module",
+  "packageManager": "pnpm@10.11.1"
 }
