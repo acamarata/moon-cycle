@@ -1,7 +1,7 @@
 {
   "name": "moon-cycle",
   "version": "2.0.0",
-  "description": "Maps any date to NASA moon phase imagery via synodic and calendar-year cycles. Lightweight npm package — images served via CDN or self-hosted from the GitHub repository.",
+  "description": "Maps any date to NASA moon phase imagery via synodic and calendar-year cycles. Lightweight npm package \u2014 images served via CDN or self-hosted from the GitHub repository.",
   "author": "Aric Camarata",
   "license": "MIT",
   "main": "./dist/index.cjs",
@@ -63,6 +63,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@acamarata/eslint-config": "^0.1.0",
+    "@acamarata/prettier-config": "^0.1.0",
+    "@acamarata/tsconfig": "^0.1.0",
     "@eslint/js": "^10.0.1",
     "@types/node": "^22.0.0",
     "eslint": "^10.0.3",
@@ -73,5 +76,6 @@
     "typescript-eslint": "^8.56.1"
   },
   "type": "module",
-  "packageManager": "pnpm@10.11.1"
+  "packageManager": "pnpm@10.11.1",
+  "prettier": "@acamarata/prettier-config"
 }

@@ -1,20 +1,11 @@
 {
+  "extends": "@acamarata/tsconfig/tsconfig.library.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "outDir": "dist",
-    "rootDir": "src",
-    "types": ["node"],
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
