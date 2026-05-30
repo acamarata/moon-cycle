@@ -8,7 +8,7 @@
 
 > **cycleMonth**(`date?`): `string`
 
-Defined in: [cycleMonth.ts:16](https://github.com/acamarata/moon-cycle/blob/800a74670ed6ac7b6d239efd6ec627dbb009fcea/src/cycleMonth.ts#L16)
+Defined in: [cycleMonth.ts:16](https://github.com/acamarata/moon-cycle/blob/208f7ffba1c1bce684a1b90ff94e52538d2632d3/src/cycleMonth.ts#L16)
 
 Maps a date to the corresponding NASA moon phase image for the monthly cycle.
 

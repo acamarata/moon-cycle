@@ -8,7 +8,7 @@
 
 > `const` **MONTH\_IMAGES**: `708` = `708`
 
-Defined in: [types.ts:64](https://github.com/acamarata/moon-cycle/blob/800a74670ed6ac7b6d239efd6ec627dbb009fcea/src/types.ts#L64)
+Defined in: [types.ts:64](https://github.com/acamarata/moon-cycle/blob/208f7ffba1c1bce684a1b90ff94e52538d2632d3/src/types.ts#L64)
 
 Number of images in the monthly (`mm`) dataset.
 

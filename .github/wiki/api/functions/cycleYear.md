@@ -8,7 +8,7 @@
 
 > **cycleYear**(`date?`): `string`
 
-Defined in: [cycleYear.ts:17](https://github.com/acamarata/moon-cycle/blob/800a74670ed6ac7b6d239efd6ec627dbb009fcea/src/cycleYear.ts#L17)
+Defined in: [cycleYear.ts:17](https://github.com/acamarata/moon-cycle/blob/208f7ffba1c1bce684a1b90ff94e52538d2632d3/src/cycleYear.ts#L17)
 
 Maps a date to the corresponding NASA moon image for the yearly cycle.
 

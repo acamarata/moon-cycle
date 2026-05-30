@@ -8,7 +8,7 @@
 
 > **imageFolder**(`set`, `size`, `quality`): `string`
 
-Defined in: [helpers.ts:13](https://github.com/acamarata/moon-cycle/blob/800a74670ed6ac7b6d239efd6ec627dbb009fcea/src/helpers.ts#L13)
+Defined in: [helpers.ts:13](https://github.com/acamarata/moon-cycle/blob/208f7ffba1c1bce684a1b90ff94e52538d2632d3/src/helpers.ts#L13)
 
 Returns the folder name for a given image set, size, and quality.
 
