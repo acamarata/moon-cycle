@@ -6,6 +6,15 @@
 
 **Examples**
 - [Basic Usage](examples/basic-usage)
+- [Prayer App Integration](examples/prayer-app)
+
+**API**
+- [cycleMonth](api/cycleMonth)
+- [cycleYear](api/cycleYear)
+- [cdnUrl](api/cdnUrl)
+- [imageFolder](api/imageFolder)
+- [Constants](api/constants)
+- [Types](api/types)
 
 **Reference**
 - [API Reference](API-Reference)

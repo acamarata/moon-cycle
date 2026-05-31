@@ -26,20 +26,18 @@ console.log(filename);  // e.g. '001.webp'
 console.log(url);
 ```
 
-## Use a larger image size
+## Use different sizes and quality levels
 
 ```javascript
 import { cycleMonth, cdnUrl } from 'moon-cycle';
 
 const filename = cycleMonth(new Date());
 
-// Available sizes: 64, 128, 256, 512
-// Available quality: 75, 85, 95
-const urlSmall  = cdnUrl(filename, 'mm', 64,  75);
+// Available sizes: 256 or 512 pixels
+// Available quality: 75 or 85
 const urlMedium = cdnUrl(filename, 'mm', 256, 75);
 const urlLarge  = cdnUrl(filename, 'mm', 512, 85);
 
-console.log(urlSmall);
 console.log(urlMedium);
 console.log(urlLarge);
 ```
@@ -51,7 +49,7 @@ import { cycleYear, cdnUrl } from 'moon-cycle';
 
 // cycleYear maps to 2023 hourly NASA photographs
 const filename = cycleYear(new Date());
-const url = cdnUrl(filename, 'yr', 256, 75);
+const url = cdnUrl(filename, 'my', 256, 75);
 
 console.log(url);
 ```
