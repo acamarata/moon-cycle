@@ -8,7 +8,7 @@
  * import type { ImageSet } from 'moon-cycle';
  * const set: ImageSet = 'mm'; // monthly synodic cycle
  */
-export type ImageSet = 'mm' | 'my';
+export type ImageSet = "mm" | "my";
 
 /**
  * Image dimension in pixels (square).
@@ -86,7 +86,7 @@ export const YEAR_IMAGES = 8760;
  * import { MONTH_ANCHOR } from 'moon-cycle';
  * const ageMs = Date.now() - MONTH_ANCHOR.getTime();
  */
-export const MONTH_ANCHOR = new Date('2023-11-13T09:27:00Z');
+export const MONTH_ANCHOR = new Date("2023-11-13T09:27:00Z");
 
 /**
  * Anchor date for the yearly cycle: start of the 2023 NASA image collection.
@@ -98,4 +98,4 @@ export const MONTH_ANCHOR = new Date('2023-11-13T09:27:00Z');
  * import { YEAR_ANCHOR } from 'moon-cycle';
  * const hours = (Date.now() - YEAR_ANCHOR.getTime()) / 3600000;
  */
-export const YEAR_ANCHOR = new Date('2023-01-01T00:00:00Z');
+export const YEAR_ANCHOR = new Date("2023-01-01T00:00:00Z");

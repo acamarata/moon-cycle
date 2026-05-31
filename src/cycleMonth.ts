@@ -1,4 +1,4 @@
-import { SYNODIC_MONTH, MONTH_IMAGES, MONTH_ANCHOR } from './types.js';
+import { SYNODIC_MONTH, MONTH_IMAGES, MONTH_ANCHOR } from "./types.js";
 
 const SYNODIC_SECONDS = SYNODIC_MONTH * 24 * 60 * 60;
 
@@ -15,7 +15,7 @@ const SYNODIC_SECONDS = SYNODIC_MONTH * 24 * 60 * 60;
  */
 export function cycleMonth(date: Date = new Date()): string {
   if (!(date instanceof Date) || isNaN(date.getTime())) {
-    throw new TypeError('date must be a valid Date instance');
+    throw new TypeError("date must be a valid Date instance");
   }
 
   // Seconds elapsed since the known new moon anchor
@@ -30,5 +30,5 @@ export function cycleMonth(date: Date = new Date()): string {
   // Map to 1-indexed image number: 1 to MONTH_IMAGES
   const index = Math.floor(fraction * MONTH_IMAGES) + 1;
 
-  return index.toString().padStart(3, '0') + '.webp';
+  return index.toString().padStart(3, "0") + ".webp";
 }

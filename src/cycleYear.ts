@@ -1,4 +1,4 @@
-import { YEAR_IMAGES, YEAR_ANCHOR } from './types.js';
+import { YEAR_IMAGES, YEAR_ANCHOR } from "./types.js";
 
 /**
  * Maps a date to the corresponding NASA moon image for the yearly cycle.
@@ -16,7 +16,7 @@ import { YEAR_IMAGES, YEAR_ANCHOR } from './types.js';
  */
 export function cycleYear(date: Date = new Date()): string {
   if (!(date instanceof Date) || isNaN(date.getTime())) {
-    throw new TypeError('date must be a valid Date instance');
+    throw new TypeError("date must be a valid Date instance");
   }
 
   // Hours elapsed since 2023-01-01T00:00:00Z
@@ -31,5 +31,5 @@ export function cycleYear(date: Date = new Date()): string {
   // Map to 1-indexed image number: 1 to YEAR_IMAGES
   const index = Math.floor(fraction * YEAR_IMAGES) + 1;
 
-  return index.toString().padStart(4, '0') + '.webp';
+  return index.toString().padStart(4, "0") + ".webp";
 }
