@@ -58,3 +58,7 @@ Images are in the public domain per NASA's [media usage guidelines](https://www.
 ## License
 
 MIT. See [LICENSE](LICENSE) for the full text.
+
+## Telemetry
+
+This package supports optional, anonymous usage telemetry via [`@acamarata/telemetry`](https://github.com/acamarata/telemetry). It is **off by default**. See [TELEMETRY.md](https://github.com/acamarata/telemetry/blob/main/TELEMETRY.md) for what is collected and how to enable or disable it.
